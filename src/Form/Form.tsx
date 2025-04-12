@@ -24,9 +24,9 @@ export const Form = ({QueryData}) => {
         if (!form.nombre) {
             alert('Datos incompletos');
             return;
-        } else {
-            QueryData(form);            
-        }
+        } 
+        QueryData(form);
+        setForm(initialForm);
     }
 
     return(

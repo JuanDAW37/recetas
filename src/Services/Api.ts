@@ -4,9 +4,7 @@ export const Api = () =>{
         const controller = new AbortController();
         options.signal = options.signal;
         options.header = options.header ? {...defaultHeader, ...options.header} : defaultHeader;
-        options.method = options.method || 'GET';
-        options.body = options.body || 'false';
-        if(!options.body) delete options.body;
+        options.method = options.method || 'GET';        
         setTimeout(()=>{controller.abort()},3000);
         const response = await fetch(endpoint, options);
         if (!response.ok) {
