@@ -31,7 +31,7 @@ export const Form = ({QueryData}) => {
 
     return(
         <>
-            <h1>Formulario</h1>
+            <h2>Busca la receta</h2>
             <form onSubmit={handleSubmit}>
                 <label htmlFor="nombre">Plato</label>
                 <input type="text" name="nombre" id="nombre" onChange={handleChange} value={form.nombre} placeholder="Plato..." />
