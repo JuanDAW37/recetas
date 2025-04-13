@@ -3,6 +3,7 @@ import { Form } from './Form/Form';
 import { Details } from './Details/Details';
 import { Api } from './Services/Api';
 import {Loader} from '../../crud/src/components/Loader'
+import {Message} from '../../crud/src/components/Message';
 let url = 'https://www.themealdb.com/api/json/v1/1/search.php?s=';
 
 function App() {
@@ -24,12 +25,11 @@ function App() {
         let {nombre} = plato 
         let endpoint = `${url}${nombre}`;        
         setLoading(true);        
-        api.get(endpoint).then((res)=>{      
+        let res = await api.get(endpoint);      
         if (res.meals) {                
           let [meals] = res.meals;            
           setSearch(meals);           
-        }
-        });
+        }        
         setLoading(false);          
       }
     }
@@ -41,9 +41,10 @@ function App() {
   return (    
     <>
       <h1>Recetas de cocina</h1>
-      {loading && <Loader />}
       <Form QueryData={QueryData}/>
-      {search && <Details search={search}/>}
+      {loading && <Loader />}
+      {search.meals == null ? <Message msg={`No hay info`} bgColor='#dc3545' /> : ''}      
+      {search && !loading && <Details search={search} />}      
     </>
   )
 }

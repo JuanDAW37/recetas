@@ -1,7 +1,8 @@
 import React from "react";
 
 export const Details = ({search}) => {
-    return(
+    if(!search) return null;
+    return(        
         <>
             <h1>Ingredientes y preparación</h1>
             <h2>Nombre: {search.strMeal}</h2>
