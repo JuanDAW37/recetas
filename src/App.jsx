@@ -41,14 +41,14 @@ function App() {
   },[plato])
 
   return (    
-    <>
+    <main>
       <h1>Recetas de cocina</h1>
       <article className='grid-1-2'>
         <Form className="form" QueryData={QueryData}/>
         {loading && <Loader className="loader"/>}   
         {!loading && <Details className="details" search={search} />}           
       </article>                  
-    </>
+    </main>
   )
 }
 
