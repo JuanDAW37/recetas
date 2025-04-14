@@ -30,13 +30,12 @@ export const Form = ({QueryData}) => {
     }
 
     return(
-        <>
-            <h2>Busca la receta</h2>
+        <section>            
             <form onSubmit={handleSubmit}>
-                <label htmlFor="nombre">Plato</label>
-                <input type="text" name="nombre" id="nombre" onChange={handleChange} value={form.nombre} placeholder="Plato..." />
+                <label htmlFor="nombre">Receta a buscar</label>
+                <input type="text" name="nombre" id="nombre" onChange={handleChange} value={form.nombre} placeholder="Receta..." />
                 <input type="submit" value="Buscar" />
             </form>
-        </>
+        </section>
     )
 }

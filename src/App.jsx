@@ -3,7 +3,7 @@ import { Form } from './Form/Form';
 import { Details } from './Details/Details';
 import { Api } from './Services/Api';
 import {Loader} from '../../crud/src/components/Loader'
-import {Message} from '../../crud/src/components/Message';
+
 let url = 'https://www.themealdb.com/api/json/v1/1/search.php?s=';
 
 function App() {
@@ -17,18 +17,20 @@ function App() {
     setPlato(datos);    
   }
 
-  useEffect(()=>{
-    
+  useEffect(()=>{ 
+    setSearch();
     if(plato === null) return;    
     const fetchData = async () => {      
       if(plato != undefined){
         let {nombre} = plato 
         let endpoint = `${url}${nombre}`;        
         setLoading(true);        
-        let res = await api.get(endpoint);      
-        if (res.meals) {                
+        let res = await api.get(endpoint);         
+        if (res.meals!=null) {                
           let [meals] = res.meals;            
           setSearch(meals);           
+        }else{                
+          setSearch();
         }        
         setLoading(false);          
       }
@@ -41,10 +43,11 @@ function App() {
   return (    
     <>
       <h1>Recetas de cocina</h1>
-      <Form QueryData={QueryData}/>
-      {loading && <Loader />}
-      {search.meals == null ? <Message msg={`No hay info`} bgColor='#dc3545' /> : ''}      
-      {search && !loading && <Details search={search} />}      
+      <article className='grid-1-2'>
+        <Form className="form" QueryData={QueryData}/>
+        {loading && <Loader className="loader"/>}   
+        {!loading && <Details className="details" search={search} />}           
+      </article>                  
     </>
   )
 }

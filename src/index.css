@@ -2,6 +2,7 @@ html {
     box-sizing: border-box;
     font-size: 16px;
     font-family: sans-serif;
+    background-color:#FF4E3A90;
 }
 
 *,
@@ -19,10 +20,14 @@ textarea {
     margin-bottom: 1rem;
     outline: none;
     display: block;
-    width: 100%;
+    width: 75%;
     font-size: 1rem;
     line-height: 1;
-    background-color: transparent;
+    background-color: transparent;    
+}
+
+li, article{
+    color: #dedede;;
 }
 
 textarea {
@@ -50,6 +55,10 @@ input[type="reset"] {
     cursor: pointer;
 }
 
+h1,h2,h3,h4,h5{
+    color:#dedede;
+}
+
 form {
     margin-bottom: 1rem;
 }
@@ -58,6 +67,7 @@ hr {
     margin: 2rem auto;
 }
 
+/*De esta forma la imagen es responsive*/
 img {
     max-width: 100%;
     height: auto;
@@ -71,6 +81,7 @@ label {
     font-weight: bold;
     line-height: 1;
     cursor: pointer;
+    color:white;
 }
 
 select {
@@ -100,6 +111,7 @@ td {
     border-bottom: thin solid #dedede;
 }
 
+/*A más de 1024px se aplican estas dos clases donde estén llamadas*/
 @media screen and (min-width: 1024px) {
     .grid-1-2 {
         display: grid;
